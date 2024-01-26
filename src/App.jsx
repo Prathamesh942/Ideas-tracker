@@ -22,7 +22,7 @@ function Navbar() {
   const user = useUser();
 
   return (
-    <nav className=" w-screen flex justify-between px-[10%] py-[1%] bg-emerald-500 text-white">
+    <nav className=" w-screen flex justify-between px-[10%] py-[1%] bg-slate-800 text-white">
       <a href="/">Idea tracker</a>
       <div>
         {user.current ? (

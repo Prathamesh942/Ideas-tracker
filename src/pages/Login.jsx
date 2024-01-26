@@ -8,11 +8,11 @@ export function Login() {
   const [password, setPassword] = useState("");
 
   return (
-    <div className=" w-screen h-screen bg-emerald-100 absolute top-0 -z-10">
-      <div className=" w-[70vw] h-[70vh] bg-emerald-500 absolute transform translate-x-[-50%] translate-y-[-50%] top-[50%] left-[50%] flex rounded-xl">
+    <div className=" w-screen h-screen bg-pink-200 absolute top-0 -z-10">
+      <div className=" w-[70vw] h-[70vh]  bg-slate-800 absolute transform translate-x-[-50%] translate-y-[-50%] top-[50%] left-[50%] flex rounded-xl">
         <div className=" flex-1">
           <img
-            src="https://i.pinimg.com/564x/bb/7c/9c/bb7c9ca12e4b6efd59e5b6678e509849.jpg"
+            src="https://cdn.dribbble.com/users/831521/screenshots/7434906/media/137fb5376dad8eceaf7bb6207b3d8172.jpg?resize=1000x750&vertical=center"
             alt=""
             className=" h-[100%] object-cover rounded-xl"
           />

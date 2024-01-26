@@ -13,7 +13,7 @@ export function Home() {
     <>
       <div className=" flex justify-center">
         {user.current ? (
-          <section className=" flex flex-col m-5  bg-emerald-200 p-5 rounded-lg">
+          <section className=" flex flex-col m-5  bg-slate-800 p-5 rounded-lg">
             <h2 className=" text-center m-5">Submit Idea</h2>
             <form className=" flex flex-col gap-5">
               <input
@@ -38,7 +38,7 @@ export function Home() {
                 onClick={() =>
                   ideas.add({ userId: user.current.$id, title, description })
                 }
-                className=" bg-emerald-500 text-white p-1 rounded-lg"
+                className="bg-slate-800 text-white p-1 rounded-lg"
               >
                 Submit
               </button>
