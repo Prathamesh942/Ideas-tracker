@@ -1,5 +1,5 @@
 import { Client, Databases, Account } from "appwrite";
-import conf from "../conf";
+import conf from "../conf/conf";
 const client = new Client();
 client.setEndpoint(conf.appwriteUrl).setProject(conf.appwriteProjectId); // Replace with your project ID
 
