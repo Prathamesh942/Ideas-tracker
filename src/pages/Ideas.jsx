@@ -73,8 +73,24 @@ function Ideas() {
                   </form>
                 </section>
               ) : (
-                <section>
+                <section className="flex gap-4 justify-center items-center">
                   <p>Please login to submit an idea.</p>
+                  <button
+                    className=" p-2 rounded-full bg-slate-950 text-white"
+                    onClick={() => {
+                      setclickedidea(false);
+                    }}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="24"
+                      viewBox="0 -960 960 960"
+                      width="24"
+                      fill="white"
+                    >
+                      <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                    </svg>
+                  </button>
                 </section>
               )}
             </div>

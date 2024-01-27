@@ -57,7 +57,7 @@ export function Navbar() {
 
   return (
     <div>
-      <nav className=" border-b border-zinc-400 bg-white w-screen flex justify-between items-center px-[15%] py-[1%] h-[60px] text-white absolute">
+      <nav className=" border-b border-zinc-400 bg-white w-screen flex justify-between items-center px-[15%] py-[1%] h-[60px] absolute">
         <a href="/" className="logo">
           !DEAlist
         </a>

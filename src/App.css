@@ -42,7 +42,7 @@
   }
 }
 
-@media only screen and (max-width: 380px) {
+@media only screen and (max-width: 450px) {
   .hero {
     font-size: 150px !important;
   }
