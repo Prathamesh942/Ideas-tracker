@@ -45,7 +45,7 @@ export function Login() {
             />
             <div className="flex flex-col gap-3 mt-5">
               <button
-                className="button w-[100%] bg-white p-1 rounded-xl"
+                className="button w-[100%] p-1 rounded-xl"
                 type="button"
                 onClick={async () => {
                   const result = await user.login(email, password);
