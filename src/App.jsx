@@ -2,6 +2,28 @@ import { Login } from "./pages/Login";
 import { Home } from "./pages/Home";
 import { UserProvider, useUser } from "./lib/context/user";
 import { IdeasProvider } from "./lib/context/ideas";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Register } from "./pages/Register";
+import Ideas from "./pages/Ideas";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/ideas",
+    element: <Ideas />,
+  },
+]);
 
 function App() {
   const isLoginPage = window.location.pathname === "/login";
@@ -10,33 +32,10 @@ function App() {
     <div>
       <IdeasProvider>
         <UserProvider>
-          <Navbar /> {/* Add the navbar before page content */}
-          <main>{isLoginPage ? <Login /> : <Home />}</main>
+          <RouterProvider router={router} />
         </UserProvider>
       </IdeasProvider>
     </div>
-  );
-}
-
-function Navbar() {
-  const user = useUser();
-
-  return (
-    <nav className=" w-screen flex justify-between px-[10%] py-[1%] bg-slate-800 text-white">
-      <a href="/">Idea tracker</a>
-      <div>
-        {user.current ? (
-          <>
-            <span>{user.current.email}</span>
-            <button type="button" onClick={() => user.logout()}>
-              Logout
-            </button>
-          </>
-        ) : (
-          <a href="/login">Login</a>
-        )}
-      </div>
-    </nav>
   );
 }
 

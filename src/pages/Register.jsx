@@ -1,17 +1,15 @@
 import { useState } from "react";
 import { useUser } from "../lib/context/user";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
-export function Login() {
-  let navigate = useNavigate();
+export function Register() {
   const user = useUser();
-  const [error, seterror] = useState();
+  const { error } = useUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   return (
-    <div className=" w-screen h-screen bg-pink-100 absolute top-0 -z-10">
+    <div className=" w-screen h-screen bg-pink-300 absolute top-0 -z-10">
       <div className=" w-[70vw] h-[70vh]  bg-[rgba(16,14,37,1)] absolute transform translate-x-[-50%] translate-y-[-50%] top-[50%] left-[50%] flex rounded-lg">
         <div className=" flex-1">
           <img
@@ -24,7 +22,7 @@ export function Login() {
           <h1 className=" absolute top-10 text-lg font-medium text-white">
             Login or register
           </h1>
-          <form className=" flex flex-col w-[60%] gap-5">
+          <form className=" flex flex-col w-[60%] gap-5 ">
             <input
               className=" outline-none bg-transparent text-white placeholder:text-zinc-100 border-b border-b-white"
               type="email"
@@ -47,21 +45,17 @@ export function Login() {
               <button
                 className="button w-[100%] bg-white p-1 rounded-xl"
                 type="button"
-                onClick={async () => {
-                  const result = await user.login(email, password);
-                  if (result.success) {
-                    navigate("/");
-                  } else {
-                    seterror(result.error);
-                  }
+                onClick={() => {
+                  console.log(email, password);
+                  user.register(email, password);
                 }}
               >
-                Login
+                Register
               </button>
               <p className="text-[#ffffff95] text-center absolute bottom-10 left-[50%] transform translate-x-[-50%]">
-                Don't have an account ?{" "}
-                <Link to="/register">
-                  <span className=" text-[#ff36bf]">Register</span>
+                Already have an account ?{" "}
+                <Link to="/login">
+                  <span className=" text-[#ff36bf]">Log in</span>
                 </Link>
               </p>
             </div>
