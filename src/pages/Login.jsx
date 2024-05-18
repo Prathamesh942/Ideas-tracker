@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useUser } from "../lib/context/user";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import "../App.css";
 
 export function Login() {
   let navigate = useNavigate();
@@ -12,15 +13,15 @@ export function Login() {
 
   return (
     <div className=" w-screen h-screen bg-pink-100 absolute top-0 -z-10">
-      <div className=" w-[70vw] h-[70vh]  bg-[rgba(16,14,37,1)] absolute transform translate-x-[-50%] translate-y-[-50%] top-[50%] left-[50%] flex rounded-lg">
-        <div className=" flex-1">
+      <div className="logincont w-[70vw] h-[70vh]  bg-[rgba(16,14,37,1)] absolute transform translate-x-[-50%] translate-y-[-50%] top-[50%] left-[50%] flex rounded-lg">
+        <div className=" flex-1 login1">
           <img
             src="https://cdn.dribbble.com/users/831521/screenshots/7434906/media/137fb5376dad8eceaf7bb6207b3d8172.jpg?resize=1000x750&vertical=center"
             alt=""
-            className=" w-[100%] h-[100%] object-cover rounded-tl-lg rounded-bl-lg"
+            className="login1 w-[100%] h-[100%] object-cover rounded-tl-lg rounded-bl-lg"
           />
         </div>
-        <section className=" flex-1 flex flex-col justify-center gap-6 items-center relative">
+        <section className=" flex-1 login2 flex flex-col justify-center gap-6 items-center relative">
           <h1 className=" absolute top-10 text-lg font-medium text-white">
             Login or register
           </h1>

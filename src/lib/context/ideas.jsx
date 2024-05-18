@@ -5,6 +5,10 @@ import { ID, Query } from "appwrite";
 export const IDEAS_DATABASE_ID = "65b294123f25267d06cf"; // Replace with your database ID
 export const IDEAS_COLLECTION_ID = "65b2941e8b5997205c0a"; // Replace with your collection ID
 
+export const COMMENTS_DATABASE_ID = "65b294123f25267d06cf"; // Replace with your comments database ID
+export const COMMENTS_COLLECTION_ID = "6648f511001700d4c169"; // Replace with your comments collection ID
+
+
 const IdeasContext = createContext();
 
 export function useIdeas() {
@@ -23,6 +27,60 @@ export function IdeasProvider(props) {
     );
     setIdeas((ideas) => [response.$id, ...ideas].slice(0, 10));
   }
+
+  async function updateVote(id, newVote) {
+    const ideaToUpdate = ideas.find((idea) => idea.$id === id);
+    if (!ideaToUpdate) return;
+
+    const updatedIdea = { ...ideaToUpdate, vote: newVote };
+    console.log(newVote);
+
+    const response = await databases.updateDocument(
+      IDEAS_DATABASE_ID,
+      IDEAS_COLLECTION_ID,
+      id,
+      { votes: newVote }
+    );
+
+    setIdeas((ideas) =>
+      ideas.map((idea) =>
+        idea.$id === id ? response : idea
+      )
+    );
+  }
+
+  async function addComment(id, username, newcomment){
+    const response = await databases.createDocument(
+      COMMENTS_DATABASE_ID,
+      COMMENTS_COLLECTION_ID,
+      ID.unique(),
+      { username, comment:newcomment }
+    );
+    const ideaToUpdate = ideas.find((idea) => idea.$id === id);
+    if (!ideaToUpdate) return;
+
+    // Add the new comment's ID to the comments array
+    const updatedComments = ideaToUpdate.comment
+      ? [...ideaToUpdate.comment, response.$id]
+      : [response.$id];
+
+    const updatedIdea = { ...ideaToUpdate, comment: updatedComments };
+
+    const response1 = await databases.updateDocument(
+      IDEAS_DATABASE_ID,
+      IDEAS_COLLECTION_ID,
+      id,
+      { comment: updatedComments }
+    );
+
+    // Update the local state
+    setIdeas((ideas) =>
+      ideas.map((idea) =>
+        idea.$id === id ? response1 : idea
+      )
+    );
+  }
+
 
   async function remove(id) {
     await databases.deleteDocument(IDEAS_DATABASE_ID, IDEAS_COLLECTION_ID, id);
@@ -44,7 +102,7 @@ export function IdeasProvider(props) {
   }, []);
 
   return (
-    <IdeasContext.Provider value={{ current: ideas, add, remove }}>
+    <IdeasContext.Provider value={{ current: ideas, add, remove, updateVote, addComment }}>
       {props.children}
     </IdeasContext.Provider>
   );
