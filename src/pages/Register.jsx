@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useUser } from "../lib/context/user";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function Register() {
   const user = useUser();
   const { error } = useUser();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   return (
     <div className=" w-screen h-screen bg-pink-300 absolute top-0 -z-10">
@@ -48,6 +49,10 @@ export function Register() {
                 onClick={() => {
                   console.log(email, password);
                   user.register(email, password);
+                  console.log(error);
+                  if(error==undefined){
+                    navigate("/login");
+                  }
                 }}
               >
                 Register
