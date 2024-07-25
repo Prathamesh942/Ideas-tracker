@@ -50,7 +50,7 @@ export function Register() {
                   console.log(email, password);
                   user.register(email, password);
                   console.log(error);
-                  if(error==undefined){
+                  if (error != undefined) {
                     navigate("/login");
                   }
                 }}
